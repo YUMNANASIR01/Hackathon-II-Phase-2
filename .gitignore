@@ -1,0 +1,163 @@
+# Dependencies
+node_modules/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+.venv/
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.*
+!.env.example
+
+# Build outputs
+dist/
+build/
+*.egg-info/
+.eggs/
+.nyc_output/
+coverage/
+.coverage
+.pytest_cache/
+.cov/
+.next/
+.nuxt/
+out/
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+*.swp
+*.swo
+*~
+
+# IDE specific
+.vscode/
+.idea/
+*.iml
+*.iws
+*.sublime-workspace
+*.sublime-project
+.vs/
+.settings/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
+
+# Database
+*.db
+*.db-journal
+tasks.db
+
+# Environment specific
+.env
+.env.local
+.env.dev
+.env.prod
+.env.staging
+.env.backup
+
+# Secrets and sensitive data
+secrets/
+credentials.json
+*.key
+*.pem
+*.crt
+*.cert
+
+# Next.js
+.next/
+out/
+.next/cache/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+pip-log.txt
+pip-delete-this-directory.txt
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.log
+.git/modules/
+
+# FastAPI/Backend
+*.db
+*.db-journal
+instance/
+.webassets-cache
+
+# Frontend
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Local development
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Database files
+*.db
+*.db-journal
+*.sqlite
+*.sqlite3
+
+# Backend specific
+backend/tasks.db
+backend/.env
+backend/.env.local
+backend/.env.backup
+
+# Frontend specific
+frontend/.next/
+frontend/out/
+frontend/.env
+frontend/.env.local
+frontend/node_modules/
+
+# Sensitive files
+config/
+credentials/
+keys/
+certs/
+private/
+secret/
+token.json
+tokens.json
