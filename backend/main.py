@@ -15,14 +15,16 @@ from security import verify_access_token, create_access_token, verify_password
 
 app = FastAPI(title="Todo App API", version="1.0.0")
 
-# Add CORS middleware - Allow all origins for now (will restrict later)
+# Add CORS middleware
 app.add_middleware(
     CORSMiddleware,
-    allow_origin_regex=".*",  # Allow all origins temporarily
+    allow_origins=["*"],  # Allow all origins
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+print("[FastAPI] CORS middleware configured to allow all origins")
 
 # JWT verification dependency
 def get_current_user(token: str = None) -> UUID:
