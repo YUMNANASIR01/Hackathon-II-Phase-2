@@ -36,6 +36,13 @@ axiosInstance.interceptors.request.use(
       // Log when token is missing (helpful for debugging)
       console.debug(`No token available for ${config.method?.toUpperCase()} ${config.url}`);
     }
+
+    // Log all requests for debugging
+    console.log(`[API Request] ${config.method?.toUpperCase()} ${config.url}`, {
+      headers: config.headers,
+      data: config.data,
+    });
+
     return config;
   },
   (error: AxiosError) => {
@@ -46,7 +53,12 @@ axiosInstance.interceptors.request.use(
 
 // Response interceptor: Handle errors
 axiosInstance.interceptors.response.use(
-  (response) => response,
+  (response) => {
+    console.log(`[API Response] ${response.status} ${response.config.url}`, {
+      data: response.data,
+    });
+    return response;
+  },
   (error: AxiosError) => {
     const errorDetails = {
       status: error.response?.status,
@@ -54,9 +66,16 @@ axiosInstance.interceptors.response.use(
       data: error.response?.data,
       message: error.message,
       url: error.config?.url,
+      method: error.config?.method,
     };
 
     console.error('API Error Details:', errorDetails);
+
+    // Log the actual error message from backend
+    if (error.response?.data && typeof error.response.data === 'object') {
+      const data = error.response.data as Record<string, unknown>;
+      console.error('[Backend Error Message]', data.detail || data.message || JSON.stringify(data));
+    }
 
     // Handle 401 - redirect to login
     if (error.response?.status === 401) {
@@ -144,9 +163,14 @@ export const authApi = {
    * Sign in with email and password
    */
   signin: async (email: string, password: string): Promise<AuthResponse> => {
+    console.log('[Signin] Raw input:', { email, password });
+    console.log('[Signin] Email type:', typeof email, 'Password type:', typeof password);
+    console.log('[Signin] Email length:', email?.length, 'Password length:', password?.length);
+    console.log('[Signin] Email trimmed:', email?.trim(), 'Password trimmed:', password?.trim());
+
     const { data } = await axiosInstance.post('/api/auth/signin', {
-      email,
-      password,
+      email: email?.trim() || email,
+      password: password?.trim() || password,
     });
     // Backend returns: {access_token, token_type, user: {id, email, name, created_at}}
     const token = data.access_token || data.token;
