@@ -1,0 +1,6 @@
+{
+  "runtime": "python3.11",
+  "handler": "index.handler",
+  "installCommand": "pip install --upgrade pip && pip install -r requirements.txt",
+  "buildCommand": "echo Build completed"
+}

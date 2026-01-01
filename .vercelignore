@@ -1,1 +1,27 @@
-pyproject.toml
+# Ignore Python virtual environments
+venv/
+env/
+.venv/
+
+# Ignore Python cache files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+
+# Ignore IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Ignore OS files
+.DS_Store
+Thumbs.db
+
+# Ignore build artifacts
+dist/
+build/
+*.egg-info/

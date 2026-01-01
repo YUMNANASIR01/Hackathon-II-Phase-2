@@ -3,7 +3,6 @@ from setuptools import setup, find_packages
 setup(
     name="hackathon-todo",
     version="0.1.0",
-    description="Todo App API",
     packages=find_packages(),
     install_requires=[
         "fastapi>=0.104.1",
@@ -14,6 +13,7 @@ setup(
         "python-dotenv>=1.0.0",
         "pyjwt>=2.8.0",
         "passlib[argon2]>=1.7.4,<2.0.0",
+        "mangum>=0.17.0",
     ],
-    python_requires=">=3.10,<3.13",
+    python_requires=">=3.9",
 )
