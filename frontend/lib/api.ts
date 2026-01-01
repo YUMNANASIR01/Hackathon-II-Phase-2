@@ -1,7 +1,12 @@
 import axios, { AxiosInstance, AxiosError, InternalAxiosRequestConfig } from 'axios';
 import type { ApiError, AuthResponse, Task, TasksResponse, CreateTaskInput, UpdateTaskInput } from './types';
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+// For Vercel deployments, use relative paths to call the API routes
+// This allows the frontend to call the backend API on the same domain
+const API_BASE_URL =
+  typeof window !== 'undefined' && window.location.hostname !== 'localhost'
+    ? ''  // Use relative paths in production
+    : process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';  // Use env var or localhost in dev
 const API_TIMEOUT = 30000; // 30 seconds
 
 // Create axios instance
